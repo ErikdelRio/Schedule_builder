@@ -1,0 +1,35 @@
+:root {
+  --yellow: #ffc600;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: roboto;
+}
+
+body {
+  margin: 2%;
+}
+
+h1 {
+  border-bottom: 10px solid var(--yellow);
+}
+#horario {
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  /* grid-gap: 5px; */
+}
+
+.hora {
+  /* background-color: #5099BB; */
+  color: #FFF;
+  padding: 4px;
+}
+
+.azul {
+  background-color: #5099BB;
+}
+
+.negro {
+  background-color: #111;
+}

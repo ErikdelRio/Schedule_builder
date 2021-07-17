@@ -1,0 +1,80 @@
+:root {
+  --yellow: #ffc600;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: roboto;
+}
+
+body {
+  margin: 4%;
+}
+
+h1 {
+  border-bottom: 10px solid var(--yellow);
+}
+#horario {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: 1fr 28fr;
+}
+#dias_div {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(7, 1fr);
+}
+#div_horas {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-rows: repeat(28, 1fr);
+}
+.horario_elem {
+}
+
+#grupos {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  background-color: #000C;
+}
+.grupo {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(28, 1fr);
+  /* Children grid */
+  grid-area: 1 / 1;
+}
+
+.hora {
+  /* background-color: #5099BB; */
+  color: #FFF;
+  /* color: #000; */
+  padding: 4px;
+}
+.miPadding {
+  padding: 4px;
+}
+
+.azul {
+  background-color: #5099BB80;
+}
+.verde {
+  background-color: #50AA2080;
+}
+.negro {
+  background-color: #1118;
+}
+.gris {
+  background-color: #8888;
+}
+.blanco {
+  background-color: #FFF8;
+}
+.rojo {
+  background-color: #F008;
+}
+.transparente {
+  background-color: #FFF0;
+}

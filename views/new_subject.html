@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/new_subject_style.css" type="text/css">
+  <title>Schedule builder</title>
+</head>
+<body>
+  <h1>Schedule builder</h1>
+  <div id="horario"></div>
+
+  <div>
+    <input id="message" placeholder="Message">
+    <button id="send" disabled="true">Send</button>
+    <!-- <button id="send" >Send</button> -->
+  </div>
+  <div id="messages">
+  </div>
+
+</body>
+
+<script>
+  var table = document.getElementById("horario");
+
+  var dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
+  table.append(document.createElement("div"));
+  for (dia of dias) {
+    let divDia = document.createElement("div");
+    divDia.innerText = dia;
+    table.append(divDia);
+  }
+
+  for (let j = 1; j <= 28; j++) {
+    let divHora = document.createElement("div");
+    let hora = 7 + ((j-1)*.5);
+    divHora.innerText = hora;
+    table.append(divHora);
+
+    for (let i = 0; i < 7; i++) {
+      let casilla = document.createElement("div");
+      let id_casilla = dias[i].substring(0,2).replace('á', 'a')+j;
+      // let id_casilla = dias[i].replace('á', 'a')+j;
+      casilla.className = "hora gris ";
+      casilla.id = id_casilla;
+      // casilla.innerText = j;
+      table.append(casilla);
+    }
+  }
+</script>
+<script src = "/socket.io/socket.io.js"> </script>
+<script type="text/javascript" src = "/Grupo.js" /> </script>
+<script type="text/javascript" src = "/js/new_subject_js.js" /> </script>
+</html>

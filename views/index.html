@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/index_style.css" type="text/css">
+  <title>Schedule builder</title>
+</head>
+<body>
+  <h1>Schedule builder Display</h1>
+  <div id="horario"></div>
+
+  <div>
+    <input id="message" placeholder="Message">
+    <button id="send" disabled="true">Send</button>
+    <!-- <button id="send" >Send</button> -->
+  </div>
+  <div id="messages">
+  </div>
+
+</body>
+
+<script>
+  var dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
+  function createHorario() {
+    horario.append(document.createElement("div"));
+
+    // table.classList.add("grupo");
+    var dias_div = document.createElement("div");
+    dias_div.id = "dias_div";
+    horario.append(dias_div);
+    for (dia of dias) {
+      let divDia = document.createElement("div");
+      divDia.innerText = dia;
+      dias_div.append(divDia);
+    }
+
+    var divHoras = document.createElement("div");
+    divHoras.id = "divHoras";
+    horario.append(divHoras);
+    for(let j = 1; j <= 28; j++) {
+      let divHora = document.createElement("div");
+      let hora = 7 + ((j-1)*.5);
+      divHora.innerText = hora;
+      divHora.className = "miPadding";
+      divHoras.append(divHora);
+    }
+
+    var grupos = document.createElement("div");
+    grupos.id = "grupos";
+    horario.append(grupos);
+  }
+
+  // function createTable() {
+  //   var table = document.createElement("div");
+  //   table.classList.add("grupo");
+  //   var dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
+  //   table.append(document.createElement("div"));
+  //   for (dia of dias) {
+  //     let divDia = document.createElement("div");
+  //     divDia.innerText = dia;
+  //     table.append(divDia);
+  //   }
+  //
+  //   for (let j = 1; j <= 28; j++) {
+  //     let divHora = document.createElement("div");
+  //     let hora = 7 + ((j-1)*.5);
+  //     divHora.innerText = hora;
+  //     table.append(divHora);
+  //
+  //     for (let i = 0; i < 7; i++) {
+  //       let casilla = document.createElement("div");
+  //       let curr_dia = dias[i].substring(0,2).replace('á', 'a')
+  //       let id_casilla = curr_dia+j;
+  //       casilla.className = "hora negro";
+  //       casilla.id = id_casilla;
+  //       casilla.innerText = j;
+  //       table.append(casilla);
+  //     }
+  //   }
+  //
+  //   return table;
+  // }
+
+  function createElementById(){
+  }
+
+  function createGrupo(grupo, name, color, zindex) {
+    var divGrupo = document.createElement("div");
+    divGrupo.id = name; //grupo.name;
+    divGrupo.className = "grupo";
+
+    for(let j = 1; j <= 28; j++) {
+      for (let i = 0; i < 7; i++) {
+        let casilla = document.createElement("div");
+        let curr_dia = dias[i].substring(0,2).replace('á', 'a')
+        let id_casilla = name+curr_dia+j;
+        casilla.id = id_casilla;
+        if(grupo.horario[curr_dia][j+15]) {
+          casilla.className = "hora "+color;
+        } else {
+          casilla.className = "hora transparente";
+        }
+        casilla.innerText = j;
+        divGrupo.append(casilla);
+      }
+    }
+    // divGrupo.style.zIndex = zindex;
+    return divGrupo;
+  }
+</script>
+<script src = "/socket.io/socket.io.js"> </script>
+<script type="text/javascript" src = "/Grupo.js" /> </script>
+<script type="text/javascript" src = "/js/index.js" /> </script>
+</html>
