@@ -8,35 +8,52 @@
 </head>
 <body>
   <h1>Schedule builder Display</h1>
-  <div id="horario"></div>
+  <div id="horario">
+    <div id="diasDiv"> </div>
+    <div id="opciones">
+      <input type="color" id="favcolor" name="favcolor" value="#ff0000">
+      Materia:
+
+      grupo:
+      <select name="cars" id="cars2">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+      </select>
+    </div>
+    <div id="divHoras"></div>
+    <div id="grupos"></div>
+  </div>
 
   <div>
     <input id="message" placeholder="Message">
     <button id="send" disabled="true">Send</button>
-    <!-- <button id="send" >Send</button> -->
   </div>
   <div id="messages">
   </div>
 
 </body>
 
-<script>
+<!-- <script>
   var dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
-  function createHorario() {
-    horario.append(document.createElement("div"));
 
-    // table.classList.add("grupo");
-    var dias_div = document.createElement("div");
-    dias_div.id = "dias_div";
-    horario.append(dias_div);
+  function createElementById(elem, id){
+    var newElem = document.createElement(elem);
+    newElem.id = id;
+    return newElem;
+  }
+
+  function createHorario() {
+    diasDiv.className = "columns7";
+    horario.append(diasDiv);
     for (dia of dias) {
       let divDia = document.createElement("div");
       divDia.innerText = dia;
-      dias_div.append(divDia);
+      diasDiv.append(divDia);
     }
 
-    var divHoras = document.createElement("div");
-    divHoras.id = "divHoras";
+    divHoras.className = "rows28";
     horario.append(divHoras);
     for(let j = 1; j <= 28; j++) {
       let divHora = document.createElement("div");
@@ -45,50 +62,12 @@
       divHora.className = "miPadding";
       divHoras.append(divHora);
     }
-
-    var grupos = document.createElement("div");
-    grupos.id = "grupos";
-    horario.append(grupos);
-  }
-
-  // function createTable() {
-  //   var table = document.createElement("div");
-  //   table.classList.add("grupo");
-  //   var dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
-  //   table.append(document.createElement("div"));
-  //   for (dia of dias) {
-  //     let divDia = document.createElement("div");
-  //     divDia.innerText = dia;
-  //     table.append(divDia);
-  //   }
-  //
-  //   for (let j = 1; j <= 28; j++) {
-  //     let divHora = document.createElement("div");
-  //     let hora = 7 + ((j-1)*.5);
-  //     divHora.innerText = hora;
-  //     table.append(divHora);
-  //
-  //     for (let i = 0; i < 7; i++) {
-  //       let casilla = document.createElement("div");
-  //       let curr_dia = dias[i].substring(0,2).replace('á', 'a')
-  //       let id_casilla = curr_dia+j;
-  //       casilla.className = "hora negro";
-  //       casilla.id = id_casilla;
-  //       casilla.innerText = j;
-  //       table.append(casilla);
-  //     }
-  //   }
-  //
-  //   return table;
-  // }
-
-  function createElementById(){
   }
 
   function createGrupo(grupo, name, color, zindex) {
     var divGrupo = document.createElement("div");
     divGrupo.id = name; //grupo.name;
-    divGrupo.className = "grupo";
+    divGrupo.className = "grupo columns7 rows28";
 
     for(let j = 1; j <= 28; j++) {
       for (let i = 0; i < 7; i++) {
@@ -105,11 +84,12 @@
         divGrupo.append(casilla);
       }
     }
-    // divGrupo.style.zIndex = zindex;
     return divGrupo;
   }
-</script>
+</script> -->
+
 <script src = "/socket.io/socket.io.js"> </script>
+<script type="text/javascript" src = "/js/html_builder.js" /> </script>
 <script type="text/javascript" src = "/Grupo.js" /> </script>
 <script type="text/javascript" src = "/js/index.js" /> </script>
 </html>

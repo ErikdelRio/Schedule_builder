@@ -30,27 +30,19 @@ function set_color_tabla(tabla, grupo, color1, color2) {
   }
 }
 
-function addMessage(response) {
-  // document.querySelector('#messages').innerHTML += `<div>${response}</div>`;
-  // response = [g1, g2, ...]
-  // parse response?
-  // console.log(response[0]);
+function addSchedule(response) {
   var horario = document.querySelector("#horario"); // maybe?
-  var grupos = response;
+  var grupos = response.data;
   var gruposDiv = document.getElementById("grupos");
   gruposDiv.append(createGrupo(grupos[0], "grupo1", "rojo", 1));
   gruposDiv.append(createGrupo(grupos[1], "grupo2", "verde", 2));
-  // for(var grupo of grupos) {
-    // var tabla = createTable();
-    // horario.append(tabla);
-    // set_color_tabla(null, grupo, null);
-  // }
 }
 
 socket.on('connect', function(data){
   document.querySelector('#send').disabled = false;
   document.querySelector('#send').addEventListener('click', function() {
-      socket.emit('read_file', document.querySelector('#message').value, addMessage);
+    var fileName = document.querySelector('#message').value;
+    socket.emit('read_file', {fileName: fileName}, addSchedule);
   });
 });
 
