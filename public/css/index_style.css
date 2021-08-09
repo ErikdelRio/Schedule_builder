@@ -55,7 +55,12 @@ h1 {
   /* Children grid */
   grid-area: 1 / 1;
 }
-
+.materiaHolder {
+  grid-area: 1/1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
 .hora {
   /* background-color: #5099BB; */
   color: #FFF;

@@ -26,7 +26,7 @@ function createHorario() {
   }
 }
 
-function createGrupo(grupo, color) {
+function createGrupo(grupo, classes) {
   var divGrupo = document.createElement("div");
   divGrupo.id = grupo.name;
   divGrupo.className = "grupo columns7 rows28";
@@ -38,7 +38,7 @@ function createGrupo(grupo, color) {
       let id_casilla = curr_dia+j+grupo.name;
       casilla.id = id_casilla;
       if(grupo.horario[curr_dia][j+15]) {
-        casilla.className = "hora "+color;
+        casilla.className = "hora "+classes;
       } else {
         casilla.className = "hora transparente";
       }
