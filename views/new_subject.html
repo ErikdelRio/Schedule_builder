@@ -3,24 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/new_subject_style.css" type="text/css">
+  <link rel="stylesheet" href="/css/index_style.css" type="text/css">
   <title>Schedule builder</title>
 </head>
 <body>
-  <h1>Schedule builder</h1>
-  <div id="horario"></div>
+  <h1>Schedule builder maker</h1>
+  <div id="horario">
 
-  <div>
-    <input id="message" placeholder="Message">
-    <button id="send" disabled="true">Send</button>
-    <!-- <button id="send" >Send</button> -->
+  <div id="diasDiv"> </div>
+  <div id="divHoras"></div>
+  <div id="grupos"></div>
+
+  <div id="opciones">
+    <div>
+      <input id="readFile" placeholder="Nombre archivo">
+      <button id="read" disabled="true">Leer</button>
+    </div>
+
+    <br><br> <!-- Borrar -->
+    Materia
+    <select id="selectMateria">
+    </select>
+    <div>
+      <input id="nuevaMateria" placeholder="Materia nueva">
+      <button id="addMateria">+</button>
+      <button id="delMateria">-</button>
+    </div>
+
+    <br><br> <!-- Borrar -->
+    Grupo
+    <select id="selectGrupo">
+    </select>
+    <div>
+      <input id="nuevoGrupo" placeholder="Grupo nuevo">
+      <button id="addGrupo">+</button>
+      <button id="delGrupo">-</button>
+    </div>
+
+    <br><br> <!-- Borrar -->
+    <div>
+      <button id="save" disabled="true">Guardar</button>
+    </div>
   </div>
-  <div id="messages">
-  </div>
+  <div id="messages"> </div>
 
 </body>
 
-<script>
+<!-- <script>
   var table = document.getElementById("horario");
 
   var dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
@@ -47,8 +76,9 @@
       table.append(casilla);
     }
   }
-</script>
+</script> -->
 <script src = "/socket.io/socket.io.js"> </script>
+<script type="text/javascript" src = "/js/html_builder.js" /> </script>
 <script type="text/javascript" src = "/Grupo.js" /> </script>
 <script type="text/javascript" src = "/js/new_subject_js.js" /> </script>
 </html>

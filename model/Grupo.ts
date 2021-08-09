@@ -3,7 +3,8 @@ class Grupo {
   horario: {
     [key: string]: boolean[]
   };
-  constructor() {
+  constructor(name) {
+    this.name = name;
     this.horario = {
       "lu": new Array(48).fill(false),
       "ma": new Array(48).fill(false),

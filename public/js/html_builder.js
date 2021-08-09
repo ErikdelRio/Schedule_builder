@@ -26,16 +26,16 @@ function createHorario() {
   }
 }
 
-function createGrupo(grupo, name, color, zindex) {
+function createGrupo(grupo, color) {
   var divGrupo = document.createElement("div");
-  divGrupo.id = name; //grupo.name;
+  divGrupo.id = grupo.name;
   divGrupo.className = "grupo columns7 rows28";
 
   for(let j = 1; j <= 28; j++) {
     for (let i = 0; i < 7; i++) {
       let casilla = document.createElement("div");
       let curr_dia = dias[i].substring(0,2).replace('á', 'a')
-      let id_casilla = name+curr_dia+j;
+      let id_casilla = curr_dia+j+grupo.name;
       casilla.id = id_casilla;
       if(grupo.horario[curr_dia][j+15]) {
         casilla.className = "hora "+color;

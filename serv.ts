@@ -18,21 +18,18 @@ app.get('/modify', function(req, res) {
 });
 
 
-function write_file(nombre: string, texto: string) {
-  fs.writeFile(nombre, texto, function (err) {
-    if (err) {
-      return console.log(err);
-    }
-  });
-}
-
 io.on('connection', function(socket) {
-  socket.on('save_file', function(data) {
+  socket.on('save_file', function(data, cb) {
     console.log("Save file order received");
 
     var horario = data.horario;
-    write_file(data.fileName, JSON.stringify(horario));
-    socket.emit("message", "Grupos guardados?");
+    try {
+      fs.writeFileSync(data.fileName, JSON.stringify(horario));
+      // fs.writeFileSync(data.fileName, horario);
+      cb({ error: null });
+    } catch(e) {
+      cb( {error: "No se pudo guardar el archivo"} );
+    }
   });
 
   socket.on('read_file', function(data, cb){
@@ -44,10 +41,7 @@ io.on('connection', function(socket) {
     }
     var res = fs.readFileSync(data.fileName, 'utf8');
     var grupos = JSON.parse(res);
-    cb({
-      error: null,
-      data: grupos
-    });
+    cb({ error: null, data: grupos });
   });
 });
 

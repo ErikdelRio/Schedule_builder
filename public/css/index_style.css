@@ -21,7 +21,7 @@ h1 {
   grid-template-columns: 1fr 7fr 3fr;
   grid-template-rows: 1fr 28fr;
   grid-template-areas:
-    ". diasDiv opciones"
+    ". diasDiv ."
     "divHoras grupos opciones";
 }
 
