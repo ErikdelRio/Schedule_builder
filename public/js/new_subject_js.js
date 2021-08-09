@@ -156,6 +156,38 @@ addGrupo.addEventListener("click", e => {
   addHoraListeners();
 });
 
+// *********** Borrar ******************
+function getOptionByValue(select, val) {
+  var ops = select.options;
+  for(var op of ops) {
+    if(op.value == val) {
+      return op;
+    }
+  }
+  return null;
+}
+delMateria.addEventListener("click", ev => {
+  var materiaDel = selectMateria.value;
+  delete materias[materiaDel];
+  selectMateria.removeChild(getOptionByValue(selectMateria, materiaDel));
+
+  var materias_keys = Object.keys(materias);
+  if(materias.length == 0) {
+    grupos.innerHTML = "";
+    selectMateria.innerHTML = "";
+    selectGrupo.innerHTML = "";
+  } else {
+    intercambiaMateria(materias_keys[0]);
+  }
+
+});
+delGrupo.addEventListener("click", ev => {
+  var mat = selectMateria.value;
+  var grupoDel = selectGrupo.value;
+  delete materias[mat][grupoDel];
+  selectGrupo.removeChild(getOptionByValue(selectGrupo, grupoDel));
+  intercambiaGrupo(Object.keys(materias[mat])[0]);
+});
 
 // ---------- Socket -----------
 var socket = io(); //('http://localhost:8081'); //.connect('http://localhost:8081');
